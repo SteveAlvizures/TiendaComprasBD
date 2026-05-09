@@ -1,0 +1,36 @@
+Proyecto: TiendaComprasBD
+
+Descripcion:
+Aplicacion monolitica de carrito de compras desarrollada con Spring Boot.
+Permite ver productos, agregar productos al carrito, quitar unidades, eliminar productos,
+confirmar una compra, ver el historial de pedidos y revisar el detalle de cada pedido.
+
+Base de datos:
+Se utiliza H2 Database como base de datos relacional embebida.
+No necesita instalar SQL Server, MySQL ni otro gestor adicional para que funcione.
+La base se guarda en la carpeta datos del proyecto.
+
+Pasos para ejecutar:
+1. Descomprimir la carpeta TiendaComprasBD.
+2. Abrir la carpeta del proyecto.
+3. Dar doble clic al archivo INICIAR_PROYECTO.bat.
+4. Esperar a que aparezca el mensaje: Started AplicacionCarrito.
+5. Abrir el navegador en: http://localhost:8081
+
+Rutas utiles:
+Aplicacion: http://localhost:8081
+Productos: http://localhost:8081/productos
+Carrito: http://localhost:8081/carrito
+Pedidos: http://localhost:8081/pedidos
+Consola de base de datos: http://localhost:8081/h2-console
+
+Datos para entrar a la consola H2:
+JDBC URL: jdbc:h2:file:./datos/TiendaComprasBD
+User Name: sa
+Password: dejar vacio
+
+Para capturas de base de datos puede usar estas consultas:
+SELECT * FROM PRODUCTOS;
+SELECT * FROM PRODUCTOS_CARRITO;
+SELECT * FROM PEDIDOS;
+SELECT * FROM DETALLES_PEDIDO;

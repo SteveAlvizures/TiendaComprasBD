@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Productos</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+<header class="barra">
+    <div>
+        <h1>Tienda Tecnologica</h1>
+        <p>Aplicacion monolitica de carrito de compras</p>
+    </div>
+    <nav>
+        <a th:href="@{/productos}">Productos</a>
+        <a th:href="@{/carrito}">Carrito</a>
+        <a th:href="@{/pedidos}">Pedidos</a>
+    </nav>
+</header>
+
+<main class="contenedor">
+    <section class="titulo">
+        <h2>Productos disponibles</h2>
+        <p>Seleccione los productos que desea agregar al carrito.</p>
+    </section>
+
+    <div th:if="${mensaje}" class="alerta correcta" th:text="${mensaje}"></div>
+    <div th:if="${error}" class="alerta incorrecta" th:text="${error}"></div>
+
+    <section class="lista-productos">
+        <article class="tarjeta" th:each="producto : ${productos}">
+            <span class="etiqueta">Disponible</span>
+            <h3 th:text="${producto.nombre}">Nombre</h3>
+            <p th:text="${producto.descripcion}">Descripcion</p>
+
+            <div class="datos">
+                <span>Precio</span>
+                <strong th:text="${'Q ' + producto.precio}">Q 0.00</strong>
+            </div>
+
+            <div class="datos">
+                <span>Existencias</span>
+                <strong th:text="${producto.existencias}">0</strong>
+            </div>
+
+            <form th:action="@{/carrito/agregar/{id}(id=${producto.id})}" method="post">
+                <button type="submit" th:disabled="${producto.existencias == 0}">Agregar al carrito</button>
+            </form>
+        </article>
+    </section>
+</main>
+
+<footer>
+    <p>Proyecto Spring Boot con SQL Server</p>
+</footer>
+</body>
+</html>

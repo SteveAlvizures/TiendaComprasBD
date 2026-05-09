@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Compra confirmada</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+<header class="barra">
+    <div>
+        <h1>Compra confirmada</h1>
+        <p>El pedido fue guardado correctamente</p>
+    </div>
+    <nav>
+        <a th:href="@{/productos}">Productos</a>
+        <a th:href="@{/pedidos}">Pedidos</a>
+    </nav>
+</header>
+
+<main class="contenedor">
+    <section class="panel confirmacion">
+        <div class="marca">✓</div>
+        <h2>Compra realizada con exito</h2>
+        <p>La informacion fue registrada en la base de datos TiendaComprasBD.</p>
+
+        <div class="caja-datos">
+            <p th:if="${pedidoId}"><strong>No. de pedido:</strong> <span th:text="${pedidoId}">1</span></p>
+            <p th:if="${total}"><strong>Total pagado:</strong> <span th:text="${'Q ' + total}">Q 0.00</span></p>
+        </div>
+
+        <a class="enlace-boton" th:href="@{/productos}">Volver a productos</a>
+        <a class="enlace-boton gris" th:href="@{/pedidos}">Ver historial</a>
+    </section>
+</main>
+
+<footer>
+    <p>Proyecto Spring Boot con SQL Server</p>
+</footer>
+</body>
+</html>

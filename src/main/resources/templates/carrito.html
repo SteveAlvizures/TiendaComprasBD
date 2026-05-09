@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Carrito</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+<header class="barra">
+    <div>
+        <h1>Carrito de compras</h1>
+        <p>Resumen de productos seleccionados</p>
+    </div>
+    <nav>
+        <a th:href="@{/productos}">Productos</a>
+        <a th:href="@{/carrito}">Carrito</a>
+        <a th:href="@{/pedidos}">Pedidos</a>
+    </nav>
+</header>
+
+<main class="contenedor">
+    <section class="titulo">
+        <h2>Detalle del carrito</h2>
+        <p>Aqui se muestran los productos agregados antes de confirmar la compra.</p>
+    </section>
+
+    <div th:if="${mensaje}" class="alerta correcta" th:text="${mensaje}"></div>
+    <div th:if="${error}" class="alerta incorrecta" th:text="${error}"></div>
+
+    <section class="panel" th:if="${!#lists.isEmpty(productosCarrito)}">
+        <table>
+            <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="item : ${productosCarrito}">
+                <td th:text="${item.producto.nombre}">Producto</td>
+                <td th:text="${'Q ' + item.producto.precio}">Q 0.00</td>
+                <td th:text="${item.cantidad}">1</td>
+                <td th:text="${'Q ' + item.subtotal}">Q 0.00</td>
+                <td class="acciones">
+                    <form th:action="@{/carrito/quitar/{id}(id=${item.id})}" method="post">
+                        <button type="submit" class="boton-secundario">Quitar 1</button>
+                    </form>
+                    <form th:action="@{/carrito/eliminar/{id}(id=${item.id})}" method="post">
+                        <button type="submit" class="boton-rojo">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="total">
+            <span>Total de la compra:</span>
+            <strong th:text="${'Q ' + total}">Q 0.00</strong>
+        </div>
+
+        <form th:action="@{/carrito/confirmar}" method="post" class="confirmar">
+            <button type="submit">Confirmar compra</button>
+        </form>
+    </section>
+
+    <section class="panel vacio" th:if="${#lists.isEmpty(productosCarrito)}">
+        <h3>El carrito esta vacio</h3>
+        <p>Agregue productos para poder realizar una compra.</p>
+        <a class="enlace-boton" th:href="@{/productos}">Ver productos</a>
+    </section>
+</main>
+
+<footer>
+    <p>Proyecto Spring Boot con SQL Server</p>
+</footer>
+</body>
+</html>
