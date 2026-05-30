@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pedidos</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+<header class="barra">
+    <div>
+        <h1>Historial de pedidos</h1>
+        <p>Compras registradas en la base de datos</p>
+    </div>
+    <nav>
+        <a th:href="@{/productos}">Productos</a>
+        <a th:href="@{/carrito}">Carrito</a>
+    </nav>
+</header>
+
+<main class="contenedor">
+    <section class="titulo">
+        <h2>Pedidos realizados</h2>
+        <p>Esta seccion ayuda a comprobar que la compra queda guardada.</p>
+    </section>
+
+    <section class="panel" th:if="${!#lists.isEmpty(pedidos)}">
+        <table>
+            <thead>
+            <tr>
+                <th>No.</th>
+                <th>Fecha</th>
+                <th>Total</th>
+                <th>Estado</th>
+                <th>Accion</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="pedido : ${pedidos}">
+                <td th:text="${pedido.id}">1</td>
+                <td th:text="${pedido.fecha}">fecha</td>
+                <td th:text="${'Q ' + pedido.total}">Q 0.00</td>
+                <td th:text="${pedido.estado}">CONFIRMADO</td>
+                <td><a class="enlace-tabla" th:href="@{/pedidos/{id}(id=${pedido.id})}">Ver detalle</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="panel vacio" th:if="${#lists.isEmpty(pedidos)}">
+        <h3>No hay pedidos registrados</h3>
+        <p>Realice una compra para ver registros en esta seccion.</p>
+    </section>
+</main>
+
+<footer>
+    <p>Proyecto Spring Boot con SQL Server</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,195 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+    margin: 0;
+    padding: 0;
+    color: #1f2d3d;
+}
+
+.barra, .encabezado {
+    background-color: #223a5e;
+    color: white;
+    padding: 25px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.barra h1, .encabezado h1 {
+    margin: 0;
+    font-size: 30px;
+}
+
+.barra p, .encabezado p {
+    margin: 8px 0 0 0;
+    color: #d8e2f0;
+    font-size: 16px;
+}
+
+.barra nav, .encabezado nav {
+    display: flex;
+    gap: 25px;
+}
+
+.barra nav a, .encabezado nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.barra nav a:hover, .encabezado nav a:hover {
+    text-decoration: underline;
+}
+
+.contenedor {
+    width: 88%;
+    margin: 35px auto;
+}
+
+.titulo, .bloque-titulo, .panel, .tabla-contenedor, .confirmacion, .vacio {
+    background-color: white;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    margin-bottom: 25px;
+}
+
+.titulo h2, .bloque-titulo h2, .confirmacion h2 {
+    margin-top: 0;
+    color: #1c2f4a;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+thead {
+    background-color: #223a5e;
+    color: white;
+}
+
+th, td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.acciones {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+button, .enlace-boton {
+    background-color: #0f8b7a;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+}
+
+button:hover, .enlace-boton:hover {
+    opacity: 0.9;
+}
+
+.boton-secundario {
+    background-color: #34495e;
+}
+
+.boton-rojo {
+    background-color: #e53935;
+}
+
+.boton-confirmar, .boton-principal {
+    background-color: #0f8b7a;
+}
+
+.total {
+    margin-top: 25px;
+    text-align: right;
+    font-size: 18px;
+}
+
+.total strong {
+    color: #0f8b7a;
+    font-size: 22px;
+}
+
+.confirmar {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.alerta {
+    padding: 14px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.correcta {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.incorrecta {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.confirmacion {
+    text-align: center;
+    max-width: 750px;
+    margin: 0 auto 30px auto;
+}
+
+.icono-check {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #0f8b7a;
+    color: white;
+    font-size: 42px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px auto;
+}
+
+.datos-confirmacion {
+    margin: 25px 0;
+    font-size: 18px;
+    line-height: 1.9;
+}
+
+.tabla-contenedor p {
+    font-size: 18px;
+    margin: 12px 0;
+}
+
+.formulario-pago {
+    margin-top: 25px;
+}
+
+select {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #bbb;
+    margin-right: 10px;
+    font-size: 15px;
+}
+
+.pie, footer {
+    text-align: center;
+    color: #5a6c7d;
+    padding: 20px;
+    margin-top: 20px;
+}

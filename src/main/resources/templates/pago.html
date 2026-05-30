@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Realizar pago</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+
+<header class="encabezado">
+    <div>
+        <h1>Realizar pago</h1>
+        <p>Seleccione el metodo de pago para completar la orden</p>
+    </div>
+
+    <nav>
+        <a th:href="@{/productos}">Productos</a>
+        <a th:href="@{/carrito}">Carrito</a>
+        <a th:href="@{/pedidos}">Pedidos</a>
+    </nav>
+</header>
+
+<main class="contenedor">
+
+    <section class="bloque-titulo">
+        <h2>Orden pendiente de pago</h2>
+        <p>Revise el total de la orden y seleccione un metodo de pago.</p>
+    </section>
+
+    <section class="tabla-contenedor">
+        <h3>Datos de la orden</h3>
+
+        <p><strong>No. de orden:</strong> <span th:text="${orden.id}">1</span></p>
+        <p><strong>Total a pagar:</strong> <span th:text="${'Q ' + orden.total}">Q 0.00</span></p>
+        <p><strong>Estado:</strong> <span th:text="${orden.estado}">PENDIENTE_PAGO</span></p>
+
+        <form th:action="@{/pago/realizar}" method="post" class="formulario-pago">
+            <input type="hidden" name="ordenId" th:value="${orden.id}">
+
+            <label for="metodoPago"><strong>Metodo de pago:</strong></label>
+
+            <select name="metodoPago" id="metodoPago" required>
+                <option value="TARJETA">Tarjeta</option>
+                <option value="EFECTIVO">Efectivo</option>
+                <option value="TRANSFERENCIA">Transferencia</option>
+            </select>
+
+            <button type="submit" class="boton-confirmar">Realizar pago</button>
+        </form>
+    </section>
+
+</main>
+
+<footer class="pie">
+    <p>Proyecto Spring Boot con H2 Database</p>
+</footer>
+
+</body>
+</html>

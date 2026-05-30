@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle del pedido</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+<header class="barra">
+    <div>
+        <h1>Detalle del pedido</h1>
+        <p>Productos incluidos en la compra</p>
+    </div>
+    <nav>
+        <a th:href="@{/productos}">Productos</a>
+        <a th:href="@{/pedidos}">Pedidos</a>
+    </nav>
+</header>
+
+<main class="contenedor">
+    <section class="titulo">
+        <h2 th:text="${'Pedido No. ' + pedido.id}">Pedido No. 1</h2>
+        <p th:text="${'Estado: ' + pedido.estado + ' | Total: Q ' + pedido.total}">Resumen</p>
+    </section>
+
+    <section class="panel">
+        <table>
+            <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="detalle : ${detalles}">
+                <td th:text="${detalle.producto.nombre}">Producto</td>
+                <td th:text="${detalle.cantidad}">1</td>
+                <td th:text="${'Q ' + detalle.subtotal}">Q 0.00</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+
+<footer>
+    <p>Proyecto Spring Boot con SQL Server</p>
+</footer>
+</body>
+</html>

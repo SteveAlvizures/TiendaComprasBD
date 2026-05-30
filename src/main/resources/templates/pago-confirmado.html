@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pago confirmado</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+
+<header class="encabezado">
+    <div>
+        <h1>Pago confirmado</h1>
+        <p>La orden fue pagada correctamente</p>
+    </div>
+
+    <nav>
+        <a th:href="@{/productos}">Productos</a>
+        <a th:href="@{/pedidos}">Pedidos</a>
+    </nav>
+</header>
+
+<main class="contenedor">
+
+    <section class="confirmacion">
+        <div class="icono-check">&#10003;</div>
+
+        <h2>Pago realizado correctamente</h2>
+        <p>El sistema registro el pago utilizando el patron Strategy.</p>
+
+        <div class="datos-confirmacion">
+            <p><strong>No. de pago:</strong> <span th:text="${pago.id}">1</span></p>
+            <p><strong>Metodo:</strong> <span th:text="${pago.metodoPago}">TARJETA</span></p>
+            <p><strong>Monto:</strong> <span th:text="${'Q ' + pago.monto}">Q 0.00</span></p>
+            <p><strong>Estado:</strong> <span th:text="${pago.estado}">APROBADO</span></p>
+            <p><strong>Referencia:</strong> <span th:text="${pago.referencia}">Referencia</span></p>
+        </div>
+
+        <a th:href="@{/productos}" class="enlace-boton">Volver a productos</a>
+    </section>
+
+</main>
+
+<footer class="pie">
+    <p>Proyecto Spring Boot con H2 Database</p>
+</footer>
+
+</body>
+</html>
